@@ -1,0 +1,117 @@
+.tradeSection {
+width: 1300px;
+margin: 3px auto;
+}
+.tradeCategory {
+    display: flex;
+    flex-direction: row;
+}
+.inputGroup {
+display: flex;
+flex-direction: column;
+}
+.tradeInput {
+    width: 70%;
+    height: 20px;
+}
+.candleLabel{
+    text-align: center;
+    font-weight: bold;
+}
+.incButton{
+width: 12%;
+padding: 0px;
+justify-content: center;
+height: 20px;
+background: #b3b6b9;
+margin: 0px 1px;
+font-weight: bold;
+cursor: pointer;
+border-width: 1px;
+border-radius: 2px;
+border-style: outset;
+border-color: #2d2b2b;
+}
+
+.tradeInputt {
+width: 92%;
+height: 20px;
+margin-left: 2px;
+}
+.balInput {
+width: 80%;
+height: 20px;
+margin-left: 2px;
+}
+.strInput {
+width: 17%;
+}
+.balWidth {
+width: 14%;
+}
+label {
+display:block;
+margin-left: 25px;
+}
+.pad {
+padding-left: 1.1em;
+}
+.tradeFlex {
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+    justify-content: center;
+}
+.balFlex {
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+}
+.row {
+margin-top: 4px;
+}
+.tradeButton {
+width:25%;
+height: 20px;
+background: hsl(210, 4%, 71%);
+margin: 1px;
+padding: 0px;
+justify-content: center;
+cursor: pointer;
+border-width: 1px;
+font-weight: bold;
+border-radius: 2px;
+border-style: outset;
+border-color: #2d2b2b;
+}
+.balButton {
+width: 17%;
+height: 20px;
+background: #b3b6b9;
+margin: 1px;
+cursor: pointer;
+padding: 0px;
+justify-content: center;
+font-weight: bold;
+border-width: 1px;
+border-radius: 2px;
+border-style: outset;
+border-color: #2d2b2b;
+}
+span:before {
+content:' '; 
+width:auto;
+}
+.head {
+height: 10px;
+float: left;
+margin-left: 20px;
+}
+button:hover {
+background: #5f6566;
+}
+
+button:disabled,
+button[disabled]{
+background: #eeecec;
+}

@@ -1,0 +1,46 @@
+  .home-container {
+    width: 100%;
+    justify-content: center;
+  }
+  .home-header {
+    text-align: center;
+    margin: auto;
+  }
+  .home-button {
+    width:7%;
+    height: 20px;
+    background: hsl(210, 4%, 71%);
+    margin: 1px;
+    padding: 0px;
+    justify-content: center;
+    cursor: pointer;
+    border-width: 1px;
+    font-weight: bold;
+    border-radius: 2px;
+    border-style: outset;
+    border-color: #2d2b2b;
+  }
+  .home-input {
+    width: 14%;
+    height: 20px;
+    margin: 0px 3px;
+}
+.home-flex {
+  width: 100%;
+  margin-top: 1%;
+  margin-left: 4%;
+}
+.info-select {
+  width: 7%;
+  height: 20px;
+  margin: 0px 3px;
+}
+.home-info {
+  width: 40%;
+  height: 20px;
+  margin: 0px 3px;
+}
+.ticker-space {
+  height: 20px;
+  margin: 6px 0px;
+}
