@@ -4,17 +4,25 @@
 /node_modules
 /.pnp
 /srcs
+/src
 /srcparnel
 /srcmordern
 .pnp.js
+/public
 
 # testing
 /coverage
 
 # production
 /build
+tsconfig.json
+package.json
+package-lock.json
+craco.config.js
+junc.json
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local
