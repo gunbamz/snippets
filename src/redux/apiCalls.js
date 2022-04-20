@@ -1,22 +1,29 @@
-import { apiCallFailure, apiCallStart, apiRegisterSuccess, apiLoginSuccess } from "./userRedux";
-import { publicRequest } from "../requestMethods";
+import { apiCallFailure, apiRegisterSuccess, apiRefreshSuccess, apiLoginSuccess } from "./userRedux";
+import { publicRequest, refreshRequest, userRequest } from "../requestMethods";
 
 export const loginApi = async (dispatch, user) => {
-  dispatch(apiCallStart());
-  try {
+  try { 
     const res = await publicRequest.post("/auth/login", user);
     dispatch(apiLoginSuccess(res.data));
   } catch (err) {
-    dispatch(apiCallFailure());
+    dispatch(apiCallFailure()); 
   }
 };
 export const registerApi = async (dispatch, user) => {
-  dispatch(apiCallStart());
   try {
     const res = await publicRequest.post("/auth/register", user);
     dispatch(apiRegisterSuccess(res.data));
   } catch (err) {
     dispatch(apiCallFailure());
-    console.log(err);
+  }
+};
+export const refreshApi = async (dispatch, user) => {
+  try {
+    const res = await refreshRequest.get("/auth/refresh", {
+      withCredentials: true
+  });
+    dispatch(apiRefreshSuccess(res.data));
+  } catch (err) {
+    dispatch(apiCallFailure());
   }
 };

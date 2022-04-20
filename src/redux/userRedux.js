@@ -3,29 +3,45 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    currentUser: null,
+    currentUser: JSON.parse(localStorage.getItem("currentUser")) || null,
     newUser: null,
-    isCalling: false,
+    users: null,
+    auth: null,
     error: false,
   },
   reducers: {
-    apiCallStart: (state) => {
-      state.isCalling = true;
-    },
     apiRegisterSuccess: (state, action) => {
-      state.isCalling = false;
        state.newUser = action.payload;
     },
+    apiUsersSuccess: (state, action) => {
+       state.users = action.payload;
+    },
     apiLoginSuccess: (state, action) => {
-      state.isCalling = false;
-      state.currentUser = action.payload;
+      const { refreshToken, ...others } = action.payload;
+      let resObj = {...others};
+      const { accessToken, ...another } = resObj;
+      //const loggedUser = {...another};
+      state.currentUser = {...another};
+      state.auth = accessToken; 
+      localStorage.setItem("currentUser", JSON.stringify({...another}));
+    },
+    apiLogoutSuccess: (state) => {
+      state.currentUser = null;
+      state.auth = null; 
+    },
+    apiRefreshSuccess: (state, action) => {
+      state.auth = action.payload.accessToken;
     },
     apiCallFailure: (state) => {
-      state.isCalling = false;
       state.error = true;
+    },
+    logout: (state) => {
+      state.currentUser = null;
+      state.auth = null;
+      localStorage.removeItem("currentUser");
     },
   },
 });
 
-export const { apiCallStart, apiLoginSuccess, apiRegisterSuccess, apiCallFailure } = userSlice.actions;
+export const { apiLogoutSuccess, apiUsersSuccess, apiLoginSuccess, apiRefreshSuccess, apiRegisterSuccess, apiCallFailure, logout } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,6 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import logger from "redux-logger";
 import cartReducer from "./cartRedux";
 import userReducer from "./userRedux";
+import messageReducer from "./messageRedux";
+import modeReducer from "./modeRedux";
 import {
   persistStore,
   persistReducer,
@@ -19,18 +22,19 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ user: userReducer, cart: cartReducer });
+const rootReducer = combineReducers({ user: userReducer, mode: modeReducer, message: messageReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
+// middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       },
+//     }),
 
-export let persistor = persistStore(store);
+//export let persistor = persistStore(store);
